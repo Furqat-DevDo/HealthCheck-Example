@@ -1,4 +1,5 @@
 using EmailService.HealthChechk;
+using EmailService.Services;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
@@ -8,7 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddHealthChecks()
-    .AddCheck<EmailServiceHealthCheck>(nameof(EmailServiceHealthCheck));
+    .AddCheck<EmailServiceHealthCheck>(nameof(EmailServiceHealthCheck),
+        tags: new[] { "email" });
+
+builder.Services.AddScoped<IEmailService,EmailService.Services.EmailService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

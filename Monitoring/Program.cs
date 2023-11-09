@@ -9,9 +9,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecksUI(setupSettings: setup =>
     {
         // Har nechi sekunda zapros tashashi
-        setup.SetEvaluationTimeInSeconds(2);
+        setup.SetEvaluationTimeInSeconds(5);
         // Bir vaqtda nechta zapros tashashi
-        setup.SetApiMaxActiveRequests(1);
+        setup.SetApiMaxActiveRequests(10);
         // UI uchun faqat bazaga tegmaydi .
         setup.MaximumHistoryEntriesPerEndpoint(50);
 

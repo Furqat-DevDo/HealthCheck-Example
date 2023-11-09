@@ -12,7 +12,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddHealthChecks()
-    .AddCheck<DatabaseHealthCheck>(nameof(DatabaseHealthCheck));
+    .AddCheck<DatabaseHealthCheck>(nameof(DatabaseHealthCheck),
+        tags: new[] { "db" });
 
 var app = builder.Build();
 
